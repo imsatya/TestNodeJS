@@ -14,7 +14,9 @@ function addDot (guid) {
 }
 
 window.addEventListener("load", function() {
-	var socket = io.connect();
+	var socket = io.connect({
+ 	   transports: ['xhr-polling']
+	});
 
 	socket.on('hello', function (data) {
 		var users = Object.keys(data);
