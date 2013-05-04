@@ -14,10 +14,14 @@ function addDot (guid) {
 }
 
 window.addEventListener("load", function() {
-	if (process.env.PORT) {
+	if (window.location.href === "http://mobitornodejs.azurewebsites.net/") {
 		var socket = io.connect("mobitornodejs.azurewebsites.net", {
  	   		transports: ['xhr-polling']
 		});
+	}
+
+	else {
+		var socket = io.connect();
 	}
 
 	socket.on('hello', function (data) {
