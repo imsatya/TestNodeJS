@@ -1,5 +1,9 @@
 var users = {};
 
+io.configure(function () {
+	io.set('transports', ['xhr-polling']);
+});
+
 function addDot (guid) {
 	var userDot = document.createElement('div');
 	userDot.classList.add("adot");
