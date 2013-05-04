@@ -41,6 +41,7 @@ io.sockets.on('connection', function (socket) {
 
 
 app.post('/mobitor', function(req, res){
+	console.log('Posted');
 	io.sockets.emit('message', { message: req.body.message });
 });
 
