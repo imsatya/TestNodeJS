@@ -32,6 +32,12 @@ if ('development' == app.get('env')) {
 app.get('/', routes.index);
 
 var users = {};
+
+io.configure(function () {
+	io.set('transports', ['xhr-polling']);
+});
+
+
 io.sockets.on('connection', function (socket) {
 	var guid = generateGUID();
 	socket.emit("hello", users);
