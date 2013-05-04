@@ -20,9 +20,15 @@ window.addEventListener("load", function() {
 	socket.on('newuser', function (data) {
 		addDot(data.guid);
 	});
-	socket.on('move', function (data) {
+	/*socket.on('move', function (data) {
 		users[data.guid].dot.style.left = (data.x+15) + "px";
 		users[data.guid].dot.style.top = (data.y+15) + "px";
+	});*/
+
+	socket.on('message', function (data) {
+		document.getElementById('txtMessage').value = data.message;
+		document.getElementById('divMessages').innerHTML += '<div>' + data.message + '</div>' + '</br>'
+
 	});
 
 	window.addEventListener("mousemove", function(e) {
