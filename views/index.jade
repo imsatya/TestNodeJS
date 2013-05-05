@@ -4,8 +4,8 @@ block content
   h1= title
   p Welcome to TEST
 
-  form(name="formName", action="/mobitor", method="post")
-    input(type="text", name="message")
+  form(name="formName", action="/mobitor", method="post", onsubmit="return processForm()")
+    input#mobitor_input(type="text", name="message")
     input(type="submit", value="go")
     input(id="txtMessage",type="text", name="message")
     div(id="divMessages")

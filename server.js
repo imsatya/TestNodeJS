@@ -43,13 +43,17 @@ io.sockets.on('connection', function (socket) {
 	socket.emit("hello", users);
 	users[guid] = {};
 	io.sockets.emit('newuser', { guid: guid });
+
+	socket.on("mobitor", function(data) {
+		console.log(data);
+	});
 });
 
 
-app.post('/mobitor', function(req, res){
+/*app.post('/mobitor', function(req, res){
 	console.log('Posted');
 	io.sockets.emit('message', { message: req.body.message });
-});
+});*/
 
 app.get('/users', user.list);
 

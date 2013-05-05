@@ -13,15 +13,17 @@ function addDot (guid) {
 	};
 }
 
+var socket;
+
 window.addEventListener("load", function() {
 	if (window.location.href === "http://mobitornodejs.azurewebsites.net/") {
-		var socket = io.connect("mobitornodejs.azurewebsites.net", {
+		socket = io.connect("mobitornodejs.azurewebsites.net", {
  	   		transports: ['xhr-polling']
 		});
 	}
 
 	else {
-		var socket = io.connect();
+		socket = io.connect();
 	}
 
 	socket.on('hello', function (data) {
@@ -48,3 +50,8 @@ window.addEventListener("load", function() {
 		socket.emit('move', { x: e.x, y: e.y });
 	});
 });
+
+function processForm() {
+	socket.emit("mobitor", { data: document.getElementById("mobitor_input").value });
+	return false;
+}
